@@ -1,16 +1,19 @@
+// __tests__/About.test.js
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import About from '..';
-describe('About component', () => {
-    const { asFragment } = render(<About />);
-    // First Test
-    it('renders', () => {
-      render(<About />);
-    });
-    expect(asFragment()).toMatchSnapshot();
-    //render About
-    // Second Test
-  })
+
+afterEach(cleanup);
+
+describe('About component renders', () => {
+  it('renders', () => {
+    render(<About />);
+  });
   
-  afterEach(cleanup);
+  it('matches snapshot DOM node structure', () => {
+    const { asFragment } = render(<About />);
+    
+    expect(asFragment()).toMatchSnapshot();
+  });
+})
